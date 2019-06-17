@@ -17,7 +17,7 @@ public class CollectionTestSuite {
     }
 
     @Test
-    public void testOddNumbersExterminatorEmptyList(){
+    public void testOddNumbersExterminatorEmptyList() {
         //Given
         OddNumbersExterminator emptyList = new OddNumbersExterminator();
         //When
@@ -25,22 +25,27 @@ public class CollectionTestSuite {
         List<Integer> result = emptyList.exterminate(listEmpty);
         System.out.println("Testing empty list");
         //Then
-        Assert.assertFalse(result.size()!= 0 );
-    }
-    @Test
-    public void testOddNumbersExterminatorNormalList(){
-        //Given
-        OddNumbersExterminator fullList = new OddNumbersExterminator();
-        //When
-        List<Integer> listFilled = new ArrayList<>();
-            for(int i=0; i<100; i++){
-            listFilled.add(i);
-        }
-        List<Integer> result = fullList.exterminate(listFilled);
-        System.out.println("Testing full list");
-        //Then
+        Assert.assertFalse(result.size() != 0);
         for (int oddNumber : result) {
             Assert.assertTrue(oddNumber % 2 != 0);
         }
     }
-}
+    @Test
+    public void testOddNumbersExterminatorNormalList() {
+            //Given
+            OddNumbersExterminator fullList = new OddNumbersExterminator();
+            //When
+            List<Integer> listFilled = new ArrayList<>();
+            for (int i = 0; i < 100; i++) {
+                listFilled.add(i);
+            }
+            List<Integer> result = fullList.exterminate(listFilled);
+            System.out.println("Testing full list");
+            //Then
+            Assert.assertTrue(result.size() != 0);
+            for (int oddNumber : result) {
+                Assert.assertTrue(oddNumber % 2 != 0);
+            }
+        }
+    }
+
