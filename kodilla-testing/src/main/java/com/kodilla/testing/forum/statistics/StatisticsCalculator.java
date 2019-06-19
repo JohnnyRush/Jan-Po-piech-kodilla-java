@@ -5,24 +5,29 @@ import java.util.List;
 
 public class StatisticsCalculator {
 
-    List<String> usersList = new ArrayList<>();
-    List<String> postsList = new ArrayList<>();
-    List<String> commentList = new ArrayList<>();
-    int numberUsers;
-    int numberPosts;
-    int numberComments;
-    double advNPOU; // NPFU means: Number Posts On User
-    double advNCOU; // Similar how higher
-    double advNCOP; // Similar how higher
+    private int numberOfUsers;
+    private int numberOfPosts;
+    private int numberOfComments;
+    double aveNPOU; // aveNPFU means: average Number Posts On User
+    double aveNCOU; // Similar how higher but C means comments
+    double aveNCOP; // Number Comments On Post
 
 
 
-
-    void calculateAdvStatistics(Statistics statistics){
-        numberUsers = usersList.size();
-        numberPosts = postsList.size();
-        numberComments = commentList.size();
-
+    public void calculateAdvStatistics(Statistics statistics){
+        numberOfUsers = statistics.usersNames().size();
+        numberOfPosts = statistics.postsCount();
+        numberOfComments = statistics.commentsCount();
+        aveNPOU = numberOfPosts/numberOfUsers;
+        aveNCOU = numberOfComments/numberOfUsers;
+        aveNCOP = numberOfComments/numberOfPosts;
     }
-    void showStatistics(){}
+    public void showStatistics(){
+        System.out.println("Liczba użytkowników: " + numberOfUsers);
+        System.out.println("Liczba postów: " + numberOfPosts);
+        System.out.println("Liczba komentarzy: " + numberOfComments);
+        System.out.println("Średnia liczba postów na użytkownika: " + aveNPOU);
+        System.out.println("Średnia liczba komentarzy na użytkownika: " + aveNCOU);
+        System.out.println("Średnia liczba komentarzy na post: " + aveNCOP);
+    }
 }
