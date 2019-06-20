@@ -158,21 +158,21 @@ public class CalculatorStatisticTestSuit {
     public void testCalculateAdvStatistics5() {
         //comments < posts
         // Given
-        Statistics statisticsMock3 = mock(Statistics.class);
+        Statistics statisticsMock = mock(Statistics.class);
 
         List<String> listOfUser = new ArrayList<>();
         for(int i = 1; i < 101; i++){
             listOfUser.add("User " + i);
         }
 
-        when(statisticsMock3.usersNames()).thenReturn(listOfUser);
-        when(statisticsMock3.postsCount()).thenReturn(1000);
-        when(statisticsMock3.commentsCount()).thenReturn(100);
+        when(statisticsMock.usersNames()).thenReturn(listOfUser);
+        when(statisticsMock.postsCount()).thenReturn(1000);
+        when(statisticsMock.commentsCount()).thenReturn(100);
 
         StatisticsCalculator calculator = new StatisticsCalculator();
 
         //When
-        calculator.calculateAdvStatistics(statisticsMock3);
+        calculator.calculateAdvStatistics(statisticsMock);
         double adv = calculator.aveNCOP;
         double adv2 = calculator.aveNCOU;
         double adv3 = calculator.aveNPOU;
