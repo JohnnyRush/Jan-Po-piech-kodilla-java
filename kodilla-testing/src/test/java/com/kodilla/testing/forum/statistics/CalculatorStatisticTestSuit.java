@@ -17,13 +17,13 @@ public class CalculatorStatisticTestSuit {
         Statistics statisticsMock = mock(Statistics.class);
 
         List<String> listOfUser = new ArrayList<>();
-        for(int i = 1; i < 854; i++){
+        for(int i = 1; i < 101; i++){
             listOfUser.add("User " + i);
         }
 
         when(statisticsMock.usersNames()).thenReturn(listOfUser);
-        when(statisticsMock.postsCount()).thenReturn(15680);
-        when(statisticsMock.commentsCount()).thenReturn(25478);
+        when(statisticsMock.postsCount()).thenReturn(200);
+        when(statisticsMock.commentsCount()).thenReturn(200);
 
         StatisticsCalculator calculator = new StatisticsCalculator();
 
@@ -34,7 +34,7 @@ public class CalculatorStatisticTestSuit {
         double adv3 = calculator.aveNPOU;
 
         //Then
-        Assert.assertTrue(adv > 0 && adv2 > 0 && adv3 > 0 );
+        Assert.assertTrue(adv == 1 && adv2 == 2 && adv3 == 2 );
 
         calculator.showStatistics();
     }
@@ -63,7 +63,9 @@ public class CalculatorStatisticTestSuit {
         double adv3 = calculator.aveNPOU;
 
         //Then
-        Assert.assertTrue(adv > 0 && adv2 > 0 && adv3 > 0 );
+        Assert.assertTrue(adv == 0 && adv2 == 0 && adv3 == 10 );
+
+        calculator.showStatistics();
     }
 
     @Test
@@ -87,7 +89,7 @@ public class CalculatorStatisticTestSuit {
         double adv3 = calculator.aveNPOU;
 
         //Then
-        Assert.assertTrue(adv > 0 && adv2 > 0 && adv3 > 0 );
+        Assert.assertTrue(adv == 0 && adv2 == 0 && adv3 == 0 );
     }
 }
 
