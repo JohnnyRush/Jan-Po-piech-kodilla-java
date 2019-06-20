@@ -5,9 +5,9 @@ import java.util.List;
 
 public class StatisticsCalculator {
 
-    private int numberOfUsers;
-    private int numberOfPosts;
-    private int numberOfComments;
+    private double numberOfUsers;
+    private double numberOfPosts;
+    private double numberOfComments;
     double aveNPOU; // aveNPFU means: average Number Posts On User
     double aveNCOU; // Similar how higher but C means comments
     double aveNCOP; // Number Comments On Post
@@ -18,9 +18,18 @@ public class StatisticsCalculator {
         numberOfUsers = statistics.usersNames().size();
         numberOfPosts = statistics.postsCount();
         numberOfComments = statistics.commentsCount();
-        aveNPOU = numberOfPosts/numberOfUsers;
-        aveNCOU = numberOfComments/numberOfUsers;
-        aveNCOP = numberOfComments/numberOfPosts;
+        if(numberOfUsers == 0){
+            aveNPOU = 0;
+            aveNCOU = 0;
+        }else{
+            aveNPOU = numberOfPosts / numberOfUsers;
+            aveNCOU = numberOfComments / numberOfUsers;
+        }
+        if(numberOfPosts == 0) {
+            aveNCOP = 0;
+        }else{
+            aveNCOP = numberOfComments/numberOfPosts;
+        }
     }
     public void showStatistics(){
         System.out.println("Liczba użytkowników: " + numberOfUsers);
