@@ -38,6 +38,7 @@ public final class ForumUser {
     public int getPostedPosts() {
         return postedPosts;
     }
+
     public int calculateAge(LocalDate birthDate, LocalDate currentDate) {
         if ((birthDate != null) && (currentDate != null)) {
             return Period.between(birthDate, currentDate).getYears();
