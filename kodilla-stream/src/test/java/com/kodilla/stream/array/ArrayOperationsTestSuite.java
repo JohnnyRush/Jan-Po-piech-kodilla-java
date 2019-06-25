@@ -41,6 +41,5 @@ public class ArrayOperationsTestSuite {
         double averege =  ArrayOperations.getAverage(tab);
 
         Assert.assertEquals(51.95, averege, 0.001);
-
     }
 }

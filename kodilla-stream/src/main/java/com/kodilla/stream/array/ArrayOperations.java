@@ -13,7 +13,6 @@ public interface ArrayOperations {
                 IntStream.range(0, numbers.length)
                         .map(s -> numbers[s])
                         .average().getAsDouble();
-
                 return average;
 
     }
