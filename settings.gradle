@@ -7,4 +7,5 @@ rootProject.name = 'kodilla-course'
 include 'kodilla-testing'
 findProject(':kodilla-testing')?.name = 'kodilla-course'
 include 'kodilla-stream'
+include 'kodilla-exception'
 
