@@ -1,8 +1,6 @@
 package com.kodilla.exception.test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class SkyScanner {
@@ -14,8 +12,8 @@ public class SkyScanner {
         fligthList.put("Paris", true);
         fligthList.put("London", false);
 
-        List<String> list = new ArrayList<>(fligthList.keySet());
-        if(list.contains(flight.getArrivalAirport())){
+
+        if(fligthList.containsKey(flight.getArrivalAirport())){
                 if(fligthList.get(flight.getArrivalAirport()) == true){
                     System.out.println("Flight found!");
                 }else{
