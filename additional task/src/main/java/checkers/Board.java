@@ -22,17 +22,27 @@ public class Board {
     public Figure getFigure(int row, int col){
         return boardRow.get(row).getFigures().get(col);
     }
+    public void move(int row1, int col1, int row2, int col2){
+        Figure movedFig = boardRow.get(row1).getFigures().get(col1);
+
+        if (boardRow.get(row2).getFigures().get(col2).getColor() == "none") {
+            boardRow.get(row2).getFigures().add(col2, movedFig);
+            boardRow.get(row2).getFigures().remove(col2 + 1);
+            None none = new None("none", "none");
+            boardRow.get(row1).getFigures().add(col1, none);
+            boardRow.get(row1).getFigures().remove(col1 + 1);
+        }else{
+            System.out.println("You cant move here");
+        }
+    }
 
     @Override
     public String toString(){
-        return boardRow.get(0).toString() + "\n" +
-               boardRow.get(1).toString() + "\n" +
-               boardRow.get(2).toString() + "\n" +
-               boardRow.get(3).toString() + "\n" +
-               boardRow.get(4).toString() + "\n" +
-               boardRow.get(5).toString() + "\n" +
-               boardRow.get(6).toString() + "\n" +
-               boardRow.get(7).toString();
+        String s = "";
+        for (Row row : boardRow) {
+            s += row.toString() + "\n";
+        }
+        return s;
     }
 
     public static void main(String[] args){
@@ -72,8 +82,13 @@ public class Board {
         System.out.println();
         System.out.println("Let's play a game!!!");
         System.out.println();
-        System.out.println("    BLACK HALF");
+        System.out.println("    BLACK HALF" + "\n");
         System.out.println(board.toString());
         System.out.println("    WHITE HALF");
+
+        board.move(5,0,4,1);
+        System.out.println();
+        System.out.println(board.toString());
+        board.move(6,1,5,2);
     }
 }

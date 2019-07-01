@@ -20,9 +20,10 @@ public class Row {
 
     @Override
     public String toString(){
-        return  '|' + listFigure.get(0).toString() + '|' + listFigure.get(1).toString()
-                + '|' + listFigure.get(2).toString() + '|' + listFigure.get(3).toString()
-                + '|' + listFigure.get(4).toString() + '|' + listFigure.get(5).toString()
-                + '|' + listFigure.get(6).toString() + '|' + listFigure.get(7).toString() + '|';
+        String s ="|";
+        for(Figure figure : listFigure){
+           s += figure.toString() + '|';
+        }
+        return  s;
     }
 }
