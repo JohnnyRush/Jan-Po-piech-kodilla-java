@@ -2,8 +2,8 @@ package checkers;
 
 public class Pawn extends Figure {
 
-    public Pawn(String color) {
-        super(color);
+    public Pawn(String color, String name){
+        super(color, name);
     }
 
     @Override

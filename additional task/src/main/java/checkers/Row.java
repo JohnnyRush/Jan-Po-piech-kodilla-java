@@ -7,17 +7,14 @@ public class Row {
 
     private List<Figure> listFigure = new ArrayList<>();
 
-
-    public Row() {
-        None figure = new None("none");
+    public Row(){
         int i;
         for (i = 0; i<8 ; i++){
-            listFigure.add(i, figure);
+            listFigure.add(i, new None("none", "none"));
         }
-
     }
 
-    public List<Figure> getFigures() {
+    public List<Figure> getFigures(){
         return listFigure;
     }
 
@@ -28,5 +25,4 @@ public class Row {
                 + '|' + listFigure.get(4).toString() + '|' + listFigure.get(5).toString()
                 + '|' + listFigure.get(6).toString() + '|' + listFigure.get(7).toString() + '|';
     }
-
 }
