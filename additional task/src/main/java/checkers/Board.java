@@ -24,15 +24,26 @@ public class Board {
     }
     public void move(int row1, int col1, int row2, int col2){
         Figure movedFig = boardRow.get(row1).getFigures().get(col1);
-
-        if (boardRow.get(row2).getFigures().get(col2).getColor() == "none") {
-            boardRow.get(row2).getFigures().add(col2, movedFig);
-            boardRow.get(row2).getFigures().remove(col2 + 1);
-            None none = new None("none", "none");
-            boardRow.get(row1).getFigures().add(col1, none);
-            boardRow.get(row1).getFigures().remove(col1 + 1);
+        if (col1 != col2 && row2 != row1){
+            if(col2 == (col1 +1) || col2 == (col1 - 1)){
+                if (row2 == (row1 +1) || row2 == (row1-1)){
+                    if (boardRow.get(row2).getFigures().get(col2).getColor() == "none"){
+                    boardRow.get(row2).getFigures().add(col2, movedFig);
+                    boardRow.get(row2).getFigures().remove(col2 + 1);
+                    None none = new None("none", "none");
+                    boardRow.get(row1).getFigures().add(col1, none);
+                    boardRow.get(row1).getFigures().remove(col1 + 1);
+                    }else{
+                        System.out.println("You cant move here - field is not empty");
+                    }
+                }else{
+                    System.out.println("You cant move here - you can not move pawn more than one row");
+                }
+            }else{
+                System.out.println("You cant move here - you can not move pawn more than one column");
+            }
         }else{
-            System.out.println("You cant move here");
+            System.out.println("You cant move here - you can not move pawn straight, only on slant");
         }
     }
 
@@ -90,5 +101,9 @@ public class Board {
         System.out.println();
         System.out.println(board.toString());
         board.move(6,1,5,2);
-    }
+        board.move(6,1,5,1);
+        board.move(6,1,4,2);
+        board.move(6,1,5,3);
+        board.move(6,7,5,8);
+        }
 }
