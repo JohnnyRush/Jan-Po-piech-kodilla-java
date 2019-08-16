@@ -36,7 +36,7 @@ class Application {
 
     public static void main(String[] args) {
         String result = MovieStore.getMovies().entrySet().stream()
-                .map(entry -> entry.getKey() + ":" + entry.getValue())
+                .flatMap(entry -> entry.getValue().stream())
                 .collect(Collectors.joining(" ! "));
 
         System.out.println(result);
