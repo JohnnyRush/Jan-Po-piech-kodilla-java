@@ -1,10 +1,7 @@
 package com.kodilla.patterns.factory.tasks;
 
-import com.kodilla.patterns.factory.ShapeFactory;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class TaskFactoryTestSuite {
 
