@@ -2,7 +2,7 @@ package com.kodilla.patterns.strategy;
 
 public class Customer {
     final private String name;
-    protected BuyPredictor buyPredictor;
+    public BuyPredictor buyPredictor;
 
     public Customer(String name) {
         this.name = name;
