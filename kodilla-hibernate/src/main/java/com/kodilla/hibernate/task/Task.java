@@ -1,5 +1,7 @@
 package com.kodilla.hibernate.task;
 
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -11,6 +13,7 @@ public class Task {
     private String description;
     private Date created;
     private int duration;
+    private TaskFinancialDetails taskFinancialDetails
 
     public Task(String description, int duration) {
         this.description = description;
@@ -40,6 +43,15 @@ public class Task {
     @Column(name = "DURATION")
     public int getDuration() {
         return duration;
+    }
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "TASKS FINANCIALS ID")
+    public TaskFinancialDetails getTaskFinancialDetails() {
+        return taskFinancialDetails;
+    }
+
+    public void setTaskFinancialDetails(TaskFinancialDetails taskFinancialDetails) {
+        this.taskFinancialDetails = taskFinancialDetails;
     }
 
     private void setId(int id) {
