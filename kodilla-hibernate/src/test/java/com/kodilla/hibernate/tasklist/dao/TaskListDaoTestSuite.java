@@ -14,7 +14,6 @@ import java.util.Optional;
 
 
 @RunWith(SpringRunner.class)
-@Transactional
 @SpringBootTest
 public class TaskListDaoTestSuite {
 
