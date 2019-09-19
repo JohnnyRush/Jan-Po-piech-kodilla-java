@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -22,7 +23,10 @@ public class TaskListDaoTestSuite {
     private static final String LISTNAME = "ToDo";
     private static final String DESCRIPTION = "Test: Learn Hibernate";
 
+
+
     @Test
+    @Transactional
     public void testFindByListName() {
         //Given
         TaskList taskList = new TaskList(LISTNAME, DESCRIPTION);
@@ -32,8 +36,7 @@ public class TaskListDaoTestSuite {
 
         //Then
         String lN = taskList.getListName();
-        TaskList readTaskList = taskListDao.findByListName(lN);
-        Assert.assertTrue(readTaskList.equals(taskList));
-
+        List<TaskList> readTaskList = taskListDao.findByListName(lN);
+        Assert.assertEquals(1, readTaskList.size());
     }
 }

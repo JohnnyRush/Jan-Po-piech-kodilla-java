@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface TaskDao extends CrudRepository<Task, Integer> {
 
-    List<Task> findByAndDuration(int duration);
 
     List<Task> findByDuration(int duration);
 }
