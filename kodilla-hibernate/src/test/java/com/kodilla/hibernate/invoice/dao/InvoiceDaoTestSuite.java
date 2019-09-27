@@ -34,27 +34,28 @@ public class InvoiceDaoTestSuite {
         Item item3 = new Item(product3, new BigDecimal(100), 1, new BigDecimal(100));
 
         Invoice invoice = new Invoice();
+
+        item1.setInvoice(invoice);
+        item2.setInvoice(invoice);
+        item3.setInvoice(invoice);
+
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
         invoice.getItems().add(item3);
 
         //When
         invoiceDao.save(invoice);
-        int item1ID = item1.getId();
-        int item2ID = item2.getId();
-        int item3ID = item3.getId();
+
+        int invoiceID = invoice.getId();
 
         //Then
         Assert.assertEquals(3, invoice.getItems().size());
 
         //CleanUp
-        //try {
-        //    invoiceDao.deleteById(item1ID);
-        //    invoiceDao.deleteById(item2ID);
-        //   invoiceDao.deleteById(item3ID);
-        //} catch (Exception e) {
-        //do nothing
-        //}
-
+        try {
+            invoiceDao.deleteById(invoiceID);
+        } catch (Exception e) {
+            //do nothing
+        }
     }
 }
