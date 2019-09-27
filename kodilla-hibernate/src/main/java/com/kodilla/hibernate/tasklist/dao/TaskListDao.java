@@ -13,4 +13,5 @@ public interface TaskListDao extends CrudRepository<TaskList, Integer> {
 
     List<TaskList> findByListName(String listName);
 
+    void removeBylistName(String lN);
 }
