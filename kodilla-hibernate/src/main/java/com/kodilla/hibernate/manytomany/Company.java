@@ -8,7 +8,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompanyWithNameStartFrom",
         query = "SELECT * FROM COMPANIES" +
-                " WHERE LEFT(COMPANY_NAME, 3) = :3CHAR ",
+                " WHERE LEFT(COMPANY_NAME, 3) = :THREE_CHAR ",
         resultClass = Company.class
 )
 @Entity
