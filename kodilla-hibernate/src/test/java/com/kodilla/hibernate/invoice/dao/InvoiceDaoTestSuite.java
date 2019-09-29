@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,7 +21,12 @@ import java.util.List;
 public class InvoiceDaoTestSuite {
 
     @Autowired
-    InvoiceDao invoiceDao;
+    private InvoiceDao invoiceDao;
+    @Autowired
+    private ItemDao itemDao;
+    @Autowired
+    private ProductDao productDao;
+
 
     @Test
     public void testInvoiceDaoSave() {
@@ -58,6 +64,8 @@ public class InvoiceDaoTestSuite {
 
         //When
         invoiceDao.save(invoice);
+        productDao.saveAll(Arrays.asList(product1, product2, product3));
+        itemDao.saveAll(Arrays.asList(item1, item2, item3));
 
         int invoiceID = invoice.getId();
 
@@ -66,7 +74,11 @@ public class InvoiceDaoTestSuite {
 
         //CleanUp
         try {
+            Arrays.asList(item1, item2, item3)
+                    .forEach(i -> itemDao.deleteById(i.getId()));
             invoiceDao.deleteById(invoiceID);
+            Arrays.asList(product1, product2, product3)
+                    .forEach(p -> productDao.deleteById(p.getId()));
         } catch (Exception e) {
             //do nothing
         }
