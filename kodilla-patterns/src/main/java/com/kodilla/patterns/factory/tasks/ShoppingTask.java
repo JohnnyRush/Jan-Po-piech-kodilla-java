@@ -15,7 +15,7 @@ public class ShoppingTask implements Task{
 
     @Override
     public String executeTask() {
-        if(LocalDate.now().getDayOfMonth() % 2 != 0) {
+        if(LocalDate.now().getDayOfMonth() % 2 == 0) {
            return "Task is done";
         }else{
             return "Task is not done";
