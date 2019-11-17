@@ -11,6 +11,12 @@ import java.util.List;
                 " WHERE LEFT(COMPANY_NAME, 3) = :THREE_CHAR ",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.retrieveCompany",
+        query = "FROM COMPANIES WHERE COMPANY_NAME LIKE :ARG"
+)
+
+//field LIKE :ARG
 @Entity
 @Table(name = "COMPANIES")
 public class Company {
