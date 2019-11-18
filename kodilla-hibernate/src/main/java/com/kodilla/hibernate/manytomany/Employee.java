@@ -11,8 +11,9 @@ import java.util.List;
 )
 @NamedQuery(
         name = "Employee.retrieveEmployes",
-        query = "FROM Employee WHERE lastname :ARG"
+        query = "FROM Employee WHERE lastname LIKE :ARG"
 )
+
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {

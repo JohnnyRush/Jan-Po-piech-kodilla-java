@@ -22,6 +22,7 @@ public class SearchFacade {
 
     public void processSearchEmp(String string) throws SearchProcessingExceptions {
         boolean wasError = false;
+        LOGGER.info("Trying search employees which has " + string + " in their lastname");
         try {
             List<Employee> employes = employeeDao.retrieveEmployes(string);
             if (employes.size() == 0) {
@@ -29,10 +30,10 @@ public class SearchFacade {
                 wasError = true;
                 throw new SearchProcessingExceptions(SearchProcessingExceptions.ERR_EMPL_NOT_FOUND);
             }
-            LOGGER.info("Employees were found");
-                    for(Employee employee : employes){
-                        System.out.println(employee.getFirstname() + " " + employee.getFirstname());
-                    }
+            LOGGER.info("Employees were found: ");
+            for (Employee employee : employes) {
+                System.out.println(employee.getFirstname() + " " + employee.getLastname());
+            }
         } finally {
             if (wasError) {
                 LOGGER.info("No employee " + string);
@@ -42,6 +43,7 @@ public class SearchFacade {
 
     public void processSearchComp(String string) throws SearchProcessingExceptions {
         boolean wasError = false;
+        LOGGER.info("Trying search companies which has " + string + " in their name");
         try {
             List<Company> companies = companyDao.retrieveCompany(string);
             if (companies.size() == 0) {
@@ -49,8 +51,8 @@ public class SearchFacade {
                 wasError = true;
                 throw new SearchProcessingExceptions(SearchProcessingExceptions.ERR_COMP_NOT_FOUND);
             }
-            LOGGER.info("Companies were found");
-            for(Company company : companies){
+            LOGGER.info("Companies were found: ");
+            for (Company company : companies) {
                 System.out.println(company.getName());
             }
         } finally {

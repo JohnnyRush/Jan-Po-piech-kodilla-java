@@ -13,7 +13,7 @@ import java.util.List;
 )
 @NamedQuery(
         name = "Company.retrieveCompany",
-        query = "FROM COMPANIES WHERE COMPANY_NAME LIKE :ARG"
+        query = "FROM Company WHERE name LIKE :ARG"
 )
 
 //field LIKE :ARG
