@@ -14,9 +14,9 @@ import java.util.List;
 @Service
 public class SearchFacade {
     @Autowired
-    CompanyDao companyDao;
+    private CompanyDao companyDao;
     @Autowired
-    EmployeeDao employeeDao;
+    private EmployeeDao employeeDao;
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchFacade.class);
 
 
